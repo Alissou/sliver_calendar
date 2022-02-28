@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:clock/clock.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:timezone/timezone.dart';
 
 import 'calendarevent.dart';
@@ -134,9 +132,7 @@ class CalendarWidget extends StatefulWidget {
   final Widget? header;
 
   @override
-  State createState() {
-    return CalendarWidgetState();
-  }
+  State<CalendarWidget> createState() => CalendarWidgetState();
 }
 
 ///

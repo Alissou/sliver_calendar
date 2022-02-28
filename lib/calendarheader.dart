@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:clock/clock.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:timezone/timezone.dart';
 
 import 'calendar.dart';
-import 'calendarevent.dart';
 
 final Duration _kExpand = Duration(milliseconds: 200);
 
@@ -78,9 +76,7 @@ class CalendarHeader extends StatefulWidget {
   final TZDateTime endingRangeDate;
 
   @override
-  State createState() {
-    return _CalendarHeaderState();
-  }
+  State<CalendarHeader> createState() => _CalendarHeaderState();
 }
 
 ///
@@ -88,20 +84,12 @@ class CalendarHeader extends StatefulWidget {
 ///
 class _CalendarHeaderState extends State<CalendarHeader>
     with SingleTickerProviderStateMixin {
-  _CalendarHeaderState() {
-    _monthIndex = monthIndexFromTime(clock.now());
-    _easeInAnimation =
-        CurvedAnimation(parent: _controller, curve: Curves.easeIn);
-    _iconTurns = Tween<double>(begin: 0.0, end: 0.5).animate(_easeInAnimation);
-  }
-
   double get maxExtent => 55.0;
 
   late StreamSubscription<bool> _headerExpandedSubscription;
   late StreamSubscription<int> _indexChangeSubscription;
   //SharedCalendarState sharedState;
-  late AnimationController _controller =
-      AnimationController(duration: _kExpand, vsync: this);
+  late AnimationController _controller;
   late CurvedAnimation _easeInAnimation;
   late Animation<double> _iconTurns;
   bool myExpandedState = false;
@@ -120,6 +108,14 @@ class _CalendarHeaderState extends State<CalendarHeader>
   @override
   void initState() {
     super.initState();
+
+    _controller = AnimationController(duration: _kExpand, vsync: this);
+
+    _monthIndex = monthIndexFromTime(clock.now());
+    _easeInAnimation =
+        CurvedAnimation(parent: _controller, curve: Curves.easeIn);
+    _iconTurns = Tween<double>(begin: 0.0, end: 0.5).animate(_easeInAnimation);
+
     _beginningMonthIndex = monthIndexFromTime(widget.beginningRangeDate);
     _endingMonthIndex = monthIndexFromTime(widget.endingRangeDate);
     _indexChangeSubscription =
@@ -293,7 +289,8 @@ class _CalendarHeaderState extends State<CalendarHeader>
 /// Shows a small dot for the event to show the calendar day has a specific
 /// event at it.
 ///
-class _CalendarEventIndicator extends CustomPainter { // les poin en bas des jours dans le calendrier
+class _CalendarEventIndicator extends CustomPainter {
+  // les poin en bas des jours dans le calendrier
   _CalendarEventIndicator(this._radius, this._event);
 
   final double _radius;
@@ -379,7 +376,8 @@ class _CalendarMonthDisplay extends StatelessWidget {
     }
   }
 
-  Widget _buildButton(ThemeData theme, DateTime day, DateTime nowTime) { // button des jours dans le calendrier
+  Widget _buildButton(ThemeData theme, DateTime day, DateTime nowTime) {
+    // button des jours dans le calendrier
     Widget button;
     // Only show days in the current month.
     if (day.month != displayDate.month) {
@@ -398,7 +396,7 @@ class _CalendarMonthDisplay extends StatelessWidget {
                       : Colors.blue,
               shape: CircleBorder(),
               padding: EdgeInsets.zero,
-              //backgroundColor: Colors.grey.shade100 
+              //backgroundColor: Colors.grey.shade100
             ),
             child: Text(day.day.toString()),
             onPressed: () => sharedState.scrollToDay(day),

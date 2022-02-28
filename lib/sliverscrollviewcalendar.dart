@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +7,6 @@ import 'package:timezone/timezone.dart';
 
 import 'calendar.dart';
 import 'calendardaymarker.dart';
-import 'calendarevent.dart';
 import 'sliverlistcalendar.dart';
 
 class SliverScrollViewCalendarElement extends StatelessElement
@@ -428,10 +426,12 @@ class SliverScrollViewCalendarElement extends StatelessElement
                   ),
                 )
               : BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(8),
-              ),
-          margin:calendarWidget.monthHeader != null? EdgeInsets.only(top: 30.0) : EdgeInsets.only(top: 30.0, left: 10, right: 10),
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+          margin: calendarWidget.monthHeader != null
+              ? EdgeInsets.only(top: 30.0)
+              : EdgeInsets.only(top: 30.0, left: 10, right: 10),
           padding: EdgeInsets.only(left: 5.0),
           constraints: calendarWidget.monthHeader != null
               ? BoxConstraints(minHeight: 100.0, maxHeight: 100.0)
