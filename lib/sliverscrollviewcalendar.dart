@@ -179,7 +179,7 @@ class SliverScrollViewCalendarElement extends StatelessElement
   }
 
   @override
-  void rebuild() {
+  void rebuild({bool force = false}) {
     _rangeVisible.clear();
     super.rebuild();
   }
