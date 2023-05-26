@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 /// A one device pixel thick horizontal line, with a circle at the start
 /// designed to look like the time of day lines in calendar.

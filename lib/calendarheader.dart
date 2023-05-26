@@ -267,7 +267,7 @@ class _CalendarHeaderState extends State<CalendarHeader>
               style: widget.headerStyle ??
                   Theme.of(context)
                       .textTheme
-                      .titleLarge!
+                      .headline6!
                       .copyWith(fontSize: 25.0),
             ),
             RotationTransition(
@@ -390,10 +390,11 @@ class _CalendarMonthDisplay extends StatelessWidget {
           child: TextButton(
             style: TextButton.styleFrom(
               foregroundColor: day.isAtSameMomentAs(nowTime)
-                  ? theme.accentColor
+                  ? theme.colorScheme.secondary
                   : day.isAtSameMomentAs(displayDate)
                       ? Colors.redAccent.shade100
-                      : Colors.blue, shape: CircleBorder(),
+                      : Colors.blue,
+              shape: CircleBorder(),
               padding: EdgeInsets.zero,
               //backgroundColor: Colors.grey.shade100
             ),

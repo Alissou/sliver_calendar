@@ -205,13 +205,13 @@ class SliverScrollViewCalendarElement extends StatelessElement
         DateTime day = events[0].instant;
         final Size screenSize = MediaQuery.of(context).size;
         double widthSecond = screenSize.width - widthFirst - inset;
-        TextStyle style = Theme.of(context).textTheme.subtitle1!.copyWith(
+        TextStyle style = Theme.of(context).textTheme.titleMedium!.copyWith(
               fontWeight: FontWeight.w300,
             );
         List<Widget> displayEvents = <Widget>[];
         if (index == _nowIndex) {
           TZDateTime nowTime = TZDateTime.now(_currentLocation);
-          style.copyWith(color: Theme.of(context).accentColor);
+          style.copyWith(color: Theme.of(context).colorScheme.secondary);
           int lastMS =
               nowTime.millisecondsSinceEpoch - Duration.millisecondsPerDay;
           bool shownDivider = false;
@@ -347,7 +347,7 @@ class SliverScrollViewCalendarElement extends StatelessElement
                           start.day.toString() +
                           " - " +
                           last.day.toString(),
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontSize: 12.0,
                             fontWeight: FontWeight.w300,
                           ),
@@ -368,7 +368,7 @@ class SliverScrollViewCalendarElement extends StatelessElement
                       start.day.toString() +
                       " - " +
                       last.day.toString(),
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: 12.0,
                         fontWeight: FontWeight.w300,
                       ),
@@ -385,7 +385,7 @@ class SliverScrollViewCalendarElement extends StatelessElement
                 children: <Widget>[
                   Text(
                     MaterialLocalizations.of(context).formatMediumDate(start),
-                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontSize: 12.0,
                           fontWeight: FontWeight.w300,
                         ),
@@ -402,7 +402,7 @@ class SliverScrollViewCalendarElement extends StatelessElement
               margin: EdgeInsets.only(top: 10.0, left: 5.0),
               child: Text(
                 MaterialLocalizations.of(context).formatMediumDate(start),
-                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
                       fontSize: 12.0,
                       fontWeight: FontWeight.w300,
                     ),
@@ -438,7 +438,7 @@ class SliverScrollViewCalendarElement extends StatelessElement
               : null,
           child: Text(
             MaterialLocalizations.of(context).formatMonthYear(start),
-            style: Theme.of(context).textTheme.headline6!.copyWith(
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: calendarWidget.monthHeader != null
                       ? Colors.white
                       : Colors.black,
