@@ -165,8 +165,7 @@ class _CalendarHeaderState extends State<CalendarHeader>
       myExpandedState = !widget.state.headerExpanded;
       widget.state.headerExpanded = myExpandedState;
       _doAnimation();
-      PageStorage.of(context)
-          ?.writeState(context, widget.state..headerExpanded);
+      PageStorage.of(context).writeState(context, widget.state..headerExpanded);
     });
   }
 
@@ -267,7 +266,7 @@ class _CalendarHeaderState extends State<CalendarHeader>
               style: widget.headerStyle ??
                   Theme.of(context)
                       .textTheme
-                      .headline6!
+                      .titleLarge!
                       .copyWith(fontSize: 25.0),
             ),
             RotationTransition(

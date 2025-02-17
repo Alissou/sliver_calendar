@@ -39,7 +39,7 @@ class CalendarDayMarker extends StatelessWidget {
 
   /// Create a side for the border.
   static BorderSide createBorderSide(BuildContext context,
-      {Color? color, double width: 0.0}) {
+      {Color? color, double width = 0.0}) {
     return BorderSide(
       color: color ?? Theme.of(context).dividerColor,
       width: width,
